@@ -9,7 +9,7 @@ import time
 # إعداد المتغيرات
 user_agent = generate_user_agent()[0]
 id = '6264668799'  # Replace This
-tok = '7859459096:AAHGtm64ABoBdKzjQatHGkUFIQl4uAcGxYk'  # Replace This
+tok = '7232454111:AAEDr1hfeacm8C6ZjoYZOsumIPMY5mntkW8'  # Replace This
 zzk = 0
 bot = telebot.TeleBot(tok)
 
