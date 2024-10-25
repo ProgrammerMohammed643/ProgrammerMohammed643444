@@ -505,7 +505,7 @@ CH - @PJPPPPPP : @BBANND*""",parse_mode="markdown",reply_to_message_id=message.m
 - @planet_646333bot*""",parse_mode="markdown",reply_to_message_id=message.message_id,reply_markup=p3)
 	if message.text == "غنيلي" or message.text == "غ":
 		song_str = random.randint(74,154)
-		song_voice = "https://t.me/fnfjfjffjrj/" + str(song_str)
+		song_voice = "https://t.me/DjAseeL/" + str(song_str)
 		bot.send_audio(message.chat.id,song_voice,"""*✯ تم ختيار اغنية لك، 
 - @planet_646333bot*""",parse_mode="markdown",reply_to_message_id=message.message_id,reply_markup=p3)
 	if message.text == "هلو":
