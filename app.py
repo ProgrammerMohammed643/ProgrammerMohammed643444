@@ -49,23 +49,23 @@ def start(message):
 def st(call):
     if call.data == 'ansh':
         nc1 = types.InlineKeyboardMarkup(row_width=2)
-        Az = bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text='اضغط على كلمه [ /gen ]', reply_markup=nc1)
-        bot.register_next_step_handler(Az, zd2)
+        bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text='اضغط على كلمه [ /gen ]', reply_markup=nc1)
+        bot.register_next_step_handler(call.message, zd2)
     elif call.data == "A":
         nc1 = types.InlineKeyboardMarkup()
-        zd1 = bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text='اضغط على كلمه [ /get ]', reply_markup=nc1)
-        bot.register_next_step_handler(zd1, OZ)
+        bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text='اضغط على كلمه [ /get ]', reply_markup=nc1)
+        bot.register_next_step_handler(call.message, OZ)
     elif call.data == "AK":
         nc1 = types.InlineKeyboardMarkup(row_width=2)
-        MC = bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text='هل تريد حذف حسابك [ /yes ]', reply_markup=nc1)
-        bot.register_next_step_handler(MC, k3)
+        bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text='هل تريد حذف حسابك [ /yes ]', reply_markup=nc1)
+        bot.register_next_step_handler(call.message, k3)
 
 def zd2(message):
     id2 = str(message.from_user.id)
     ms = message.text
     if '/gen' in ms:
         try:
-            os.remove(f'token{id2}.txt')  # استخدم remove بدلاً من system
+            os.remove(f'token{id2}.txt')
             bot.send_message(message.chat.id, "<strong>جـاري انـشاء ايـميل</strong>", parse_mode="html", reply_markup=types.InlineKeyboardMarkup())
             url = 'https://api.internal.temp-mail.io/api/v3/email/new'
             data = {'name': 'ahmed', 'domain': 'greencafe24.com'}
@@ -77,7 +77,7 @@ def zd2(message):
             with open(f'token{id2}.txt', 'a') as zaidno:
                 zaidno.write(f'{email}')
             z = f"""
- تـم انشـاء بريـد بنـجاح
+تـم انشـاء بريـد بنـجاح
  ـــــــــــــــــــــــــــــــــــــــ
  الايميل : {email}
  ـــــــــــــــــــــــــــــــــــــــ
@@ -85,10 +85,9 @@ def zd2(message):
  للرجوع اضغط على
  /start""" 
             bot.send_message(message.chat.id, f"<strong>{z}</strong>", parse_mode="html", reply_markup=types.InlineKeyboardMarkup())
-
         except Exception as e:
             bot.send_message(message.chat.id, "<strong> ❗لقد حدث خطأ ماا</strong>", parse_mode="html", reply_markup=types.InlineKeyboardMarkup())
-            print(f"Error in zd2: {e}")  # طباعة الخطأ
+            print(f"Error in zd2: {e}")
 
     else:
         bot.send_message(message.chat.id, "<strong> ❗ارسـلت الكـلمه بشـكل خـطأ</strong>", parse_mode="html", reply_markup=types.InlineKeyboardMarkup())
@@ -107,20 +106,18 @@ def OZ(message):
             else:
                 bot.send_message(message.chat.id, "لا يوجد رسائل حاليا")
         else:
-            bot.send_message(message.chat.id, "<strong> ارسـلت الـكلمة بشـكل خطـأ</strong>", parse_mode="html", reply_markup=types.InlineKeyboardMarkup())
+            bot.send_message(message.chat.id, "<strong> ارسـلت الـكلمة بشـكل خـطـأ</strong>", parse_mode="html", reply_markup=types.InlineKeyboardMarkup())
     except Exception as e:
         bot.send_message(message.chat.id, "<strong>❗ليـس لـديك حسـاب بالـبوت</strong>", parse_mode="html", reply_markup=types.InlineKeyboardMarkup())
-        print(f"Error in OZ: {e}")  # طباعة الخطأ
+        print(f"Error in OZ: {e}")
 
 def k3(message):
     mg = message.chat.id
     try:
-        os.remove(f'token{mg}.txt')  # استخدم remove بدلاً من system
-        key = types.InlineKeyboardMarkup()
-        bot.send_message(message.chat.id, "<strong>تـم حـذف حسـابك القديم</strong>", parse_mode="html", reply_markup=key)
+        os.remove(f'token{mg}.txt')
+        bot.send_message(message.chat.id, "<strong>تـم حـذف حسـابك القديم</strong>", parse_mode="html", reply_markup=types.InlineKeyboardMarkup())
     except FileNotFoundError:
-        key = types.InlineKeyboardMarkup()
-        bot.send_message(message.chat.id, "<strong>ليس لديك حساب اساساً</strong>", parse_mode="html", reply_markup=key)
+        bot.send_message(message.chat.id, "<strong>ليس لديك حساب اساساً</strong>", reply_markup=types.InlineKeyboardMarkup())
 
 @bot.message_handler(commands=["info"])
 def inf(message):
