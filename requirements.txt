@@ -1,2 +1,5 @@
 pyTelegramBotAPI
+requests
+user-agent
+pyTelegramBotAPI
 os
