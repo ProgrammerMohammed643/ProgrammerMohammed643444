@@ -1,33 +1,39 @@
+import os
 import telebot
+from telebot import types
 
+# تعيين توكن البوت الخاص بك هنا
 token = "7232454111:AAEDr1hfeacm8C6ZjoYZOsumIPMY5mntkW8"
 bot = telebot.TeleBot(token)
 
-from telebot import types
-
+# دالة بداية البوت واستقبال أمر /start
 @bot.message_handler(commands=["start"])
 def start(message):
     # إعداد الأزرار
     markup = types.InlineKeyboardMarkup()
     
-    # الزر الأول
-    button1 = types.InlineKeyboardButton("ᴍᴏʜᴧᴍᴍᴇᴅ", url="https://t.me/KOK0KK")
+    # إضافة الأزرار المطلوبة
+    button1 = types.InlineKeyboardButton("ᴍᴏʜᴏᴍᴍᴇᴅ", url="https://t.me/KOK0KK")
     markup.add(button1)
-    
-    # الزر الثاني
-    button2 = types.InlineKeyboardButton("ملفات 𝐏𝐘𝐓𝐇𝐎𝐍", url="https://t.me/Your_uncle_Muhammad")  # استبدل الرابط بالذي تريده
+    button2 = types.InlineKeyboardButton("ملفات 𝐏𝐘𝐓𝐇𝐎𝐍", url="https://t.me/Your_uncle_Muhammad")
     markup.add(button2)
 
     # إرسال الصورة مع الرسالة والأزرار
-    bot.send_photo(message.chat.id, "https://t.me/B_6ODA/2151", caption="""
-**╭⦿  ꜱᴏᴜꝛᴄᴇ.ɴᴧᴍᴇ: ᴍᴏʜᴧᴍᴍᴇᴅ
-│᚜⦿ ꜱʏꜱᴛᴇᴍ: ᴘʏᴛʜᴏɴ
-│᚜⦿ ʟᴧɴɢᴜᴧɢᴇ: ɪꜱ ᴧꝛᴧʙɪᴄ
-│᚜⦿ ᴅᴧᴛᴇ ᴄꝛᴇᴧᴛᴇᴅ: 2024- 10- 26 **بوت زغرفه**
-╰⦿  ᴏᴡɴᴇꝛ ᴏꜰ ᴍᴏʜᴧᴍᴍᴇᴅ: [ᴍᴏʜᴧᴍᴍᴇᴅ](https://t.me/KOK0KK)**
-""", reply_markup=markup, parse_mode='Markdown')
+    bot.send_photo(
+        message.chat.id,
+        "https://t.me/B_6ODA/2151",
+        caption="""
+        **╭⦿  ꜱᴏᴜꝛᴄᴇ.ɴᴧᴍᴇ: ᴍᴏʜᴧᴍᴍᴇᴅ
+        │᚜⦿ ꜱʏꜱᴛᴇᴍ: ᴘʏᴛʜᴏɴ
+        │᚜⦿ ʟᴧɴɢᴜᴧɢᴇ: ɪꜱ ᴧꝛᴧʙɪᴄ
+        │᚜⦿ ᴅᴧᴛᴇ ᴄʀᴇᴧᴛᴇᴅ: 2024-10-26
+        ╰⦿  ᴏᴡɴᴇʀ ᴏꜰ ᴍᴏʜᴧᴍᴍᴇᴅ: [ᴍᴏʜᴧᴍᴍᴇᴅ](https://t.me/KOK0KK)**
+        """,
+        reply_markup=markup,
+        parse_mode='Markdown'
+    )
 
-
+# دوال تنسيق الاسم بزخارف متعددة
 def stylish_name(name):
     styles = [
         ("𝗔𝗕𝗖𝗗𝗘𝗙𝗚𝗛𝗜𝗝𝗞𝗟𝗠𝗡𝗢𝗣𝗤𝗥𝗦𝗧𝗨𝗩𝗪𝗫𝗬𝗭", "𝗮𝗯𝗰𝗱𝗲𝗳𝗴𝗵𝗶𝗷𝗸𝗹𝗺𝗻𝗼𝗽𝗾𝗿𝗲𝘀𝘁𝘂𝘃𝘄𝘅𝘆𝘇"),  
@@ -43,23 +49,22 @@ def stylish_name(name):
         ("ꪖ᥇ᥴᦔꫀᠻᧁꫝ𝓲𝓳𝘬ꪶꪑꪀꪮρ𝘲𝘳𝘴𝓽ꪊꪜ᭙᥊ꪗɀ", "ꪖ᥇ᥴᦔꫀᠻᧁꫝ𝓲𝓳𝘬ꪶꪑꪀꪮρ𝘲𝘳𝘴𝓽ꪊꪜ᭙᥊ꪗɀ"),  
         ("ᴬᴮᶜᵈᵉꜻᶜʜᴵᴶᴷᴸᴹᴺᴼᵖᵠᴿˢᵀᵁᵛᶻ", "ᴬᴮᶜᵈᵉꜻᶜʜᴵᴶᴷᴸᴹᴺᴼᵖᵠᴿˢᵀᵁᵛᶻ"),
         ("ᴧʙᴄᴅᴇꜰɢʜɪʲᴋʟᴍɴᴏᴘᵠꝛsᴛᴜᴠᴡхʏᴢ", "ᴧʙᴄᴅᴇꜰɢʜɪʲᴋʟᴍɴᴏᴘᵠꝛsᴛᴜᴠᴡхʏᴢ"),
-    ]
+    ][style_name(name, *style) for style in styles]
 
-    decorated_names = []
-    for bold, normal in styles:
-        styled_name = "".join(
-            bold[ord(c) - ord('A')] if 'A' <= c <= 'Z' and (ord(c) - ord('A')) < len(bold) else 
-            normal[ord(c) - ord('a')] if 'a' <= c <= 'z' and (ord(c) - ord('a')) < len(normal) else c 
-            for c in name
-        )
-        decorated_names.append(styled_name)
+def style_name(name, upper_style, lower_style):
+    name = name.upper()
+    stylish = ''.join([upper_style[ord(c) - ord('A')] if 'A' <= c <= 'Z' else c for c in name])
+    return stylish
 
-    return "\n".join(decorated_names)
+# استقبال النصوص من المستخدم وتطبيق الزخرفة
+@bot.message_handler(func=lambda message: True)
+def handle_text(message):
+    name = message.text.strip()
+    decorated_names = stylish_name(name)
+    decorated_message = '\n'.join(decorated_names)
+    bot.send_message(message.chat.id, decorated_message)
 
-@bot.message_handler(func=lambda message: True) 
-def zagrafa(message):
-    u = message.text
-    styled_names = stylish_name(u)
-    bot.send_message(message.chat.id, styled_names)
-
-bot.infinity_polling()
+# تشغيل البوت وتحديد المنفذ
+if __name__ == "__main__":
+    port = int(os.getenv("PORT", 5000))
+    bot.polling(none_stop=True, timeout=60)
