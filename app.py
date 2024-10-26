@@ -33,7 +33,7 @@ def start(message):
         parse_mode='Markdown'
     )
 
-# دوال تنسيق الاسم بزخارف متعددة
+# دالة لتطبيق الزخارف المختلفة
 def stylish_name(name):
     styles = [
         ("𝗔𝗕𝗖𝗗𝗘𝗙𝗚𝗛𝗜𝗝𝗞𝗟𝗠𝗡𝗢𝗣𝗤𝗥𝗦𝗧𝗨𝗩𝗪𝗫𝗬𝗭", "𝗮𝗯𝗰𝗱𝗲𝗳𝗴𝗵𝗶𝗷𝗸𝗹𝗺𝗻𝗼𝗽𝗾𝗿𝗲𝘀𝘁𝘂𝘃𝘄𝘅𝘆𝘇"),  
@@ -49,11 +49,12 @@ def stylish_name(name):
         ("ꪖ᥇ᥴᦔꫀᠻᧁꫝ𝓲𝓳𝘬ꪶꪑꪀꪮρ𝘲𝘳𝘴𝓽ꪊꪜ᭙᥊ꪗɀ", "ꪖ᥇ᥴᦔꫀᠻᧁꫝ𝓲𝓳𝘬ꪶꪑꪀꪮρ𝘲𝘳𝘴𝓽ꪊꪜ᭙᥊ꪗɀ"),  
         ("ᴬᴮᶜᵈᵉꜻᶜʜᴵᴶᴷᴸᴹᴺᴼᵖᵠᴿˢᵀᵁᵛᶻ", "ᴬᴮᶜᵈᵉꜻᶜʜᴵᴶᴷᴸᴹᴺᴼᵖᵠᴿˢᵀᵁᵛᶻ"),
         ("ᴧʙᴄᴅᴇꜰɢʜɪʲᴋʟᴍɴᴏᴘᵠꝛsᴛᴜᴠᴡхʏᴢ", "ᴧʙᴄᴅᴇꜰɢʜɪʲᴋʟᴍɴᴏᴘᵠꝛsᴛᴜᴠᴡхʏᴢ"),
-    ][style_name(name, *style) for style in styles]
+    ]
+    return [style_name(name, *style) for style in styles]
 
+# دالة لتطبيق الزخرفة على النص المدخل
 def style_name(name, upper_style, lower_style):
-    name = name.upper()
-    stylish = ''.join([upper_style[ord(c) - ord('A')] if 'A' <= c <= 'Z' else c for c in name])
+    stylish = ''.join([upper_style[ord(c) - ord('A')] if 'A' <= c <= 'Z' else c for c in name.upper()])
     return stylish
 
 # استقبال النصوص من المستخدم وتطبيق الزخرفة
